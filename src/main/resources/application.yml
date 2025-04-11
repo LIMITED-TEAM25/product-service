@@ -1,1 +1,8 @@
-spring.application.name=product-service
+spring:
+  application:
+    name: product-service
+
+  config:
+    import:
+      - classpath:properties/datasource.yml
+      - classpath:properties/jpa.yml
