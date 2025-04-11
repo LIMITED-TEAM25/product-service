@@ -2,11 +2,11 @@ package com.sparta.limited.product_service.application.dto.response;
 
 import java.math.BigDecimal;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProductCreateResponse {
 
     private final UUID id;
