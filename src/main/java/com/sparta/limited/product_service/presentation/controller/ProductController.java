@@ -2,9 +2,13 @@ package com.sparta.limited.product_service.presentation.controller;
 
 import com.sparta.limited.product_service.application.dto.request.ProductCreateRequest;
 import com.sparta.limited.product_service.application.dto.response.ProductCreateResponse;
+import com.sparta.limited.product_service.application.dto.response.ProductReadResponse;
 import com.sparta.limited.product_service.application.service.ProductService;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,13 @@ public class ProductController {
     public ResponseEntity<ProductCreateResponse> createProduct(
         @RequestBody ProductCreateRequest request) {
         ProductCreateResponse response = productService.createProduct(request);
+        return ResponseEntity.ok(response);
+    }
+
+    // 상품 단건 조회
+    @GetMapping("{productId}")
+    public ResponseEntity<ProductReadResponse> getProduct(@PathVariable UUID productId) {
+        ProductReadResponse response = productService.getProduct(productId);
         return ResponseEntity.ok(response);
     }
 
