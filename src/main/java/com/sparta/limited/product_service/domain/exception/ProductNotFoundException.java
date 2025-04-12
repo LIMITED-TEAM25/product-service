@@ -6,7 +6,7 @@ import com.sparta.limited.common_module.exception.ErrorCode;
 public class ProductNotFoundException extends BusinessException {
 
     public ProductNotFoundException() {
-        super(ErrorCode.RESOURCES_NOT_FOUND);
+        super(ErrorCode.RESOURCES_NOT_FOUND, "Product not found");
     }
 
 }
