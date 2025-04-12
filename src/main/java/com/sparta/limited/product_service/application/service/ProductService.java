@@ -19,15 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
 
     // 상품 생성
     @Transactional
     public ProductCreateResponse createProduct(ProductCreateRequest request) {
-        Product product = productMapper.toCreateEntity(request);
+        Product product = ProductMapper.toCreateEntity(request);
 
         productRepository.save(product);
-        return productMapper.toCreateResponse(product);
+        return ProductMapper.toCreateResponse(product);
     }
 
     // 상품 단건 조회
@@ -36,6 +35,6 @@ public class ProductService {
         Product product = productRepository.findByIdAndDeletedAtIsNull(productId)
             .orElseThrow(ProductNotFoundException::new);
 
-        return productMapper.toReadResponse(product);
+        return ProductMapper.toReadResponse(product);
     }
 }
