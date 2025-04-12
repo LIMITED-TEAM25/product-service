@@ -2,9 +2,12 @@ package com.sparta.limited.product_service.application.service;
 
 import com.sparta.limited.product_service.application.dto.request.ProductCreateRequest;
 import com.sparta.limited.product_service.application.dto.response.ProductCreateResponse;
+import com.sparta.limited.product_service.application.dto.response.ProductReadResponse;
 import com.sparta.limited.product_service.application.mapper.ProductMapper;
+import com.sparta.limited.product_service.domain.exception.ProductNotFoundException;
 import com.sparta.limited.product_service.domain.model.Product;
 import com.sparta.limited.product_service.domain.repository.ProductRepository;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,11 +24,18 @@ public class ProductService {
     // 상품 생성
     @Transactional
     public ProductCreateResponse createProduct(ProductCreateRequest request) {
-        Product product = productMapper.toEntity(request);
+        Product product = productMapper.toCreateEntity(request);
 
         productRepository.save(product);
-        return productMapper.toResponse(product);
+        return productMapper.toCreateResponse(product);
     }
 
+    // 상품 단건 조회
+    @Transactional(readOnly = true)
+    public ProductReadResponse getProduct(UUID productId) {
+        Product product = productRepository.findByIdAndDeletedAtIsNull(productId)
+            .orElseThrow(ProductNotFoundException::new);
 
+        return productMapper.toReadResponse(product);
+    }
 }
