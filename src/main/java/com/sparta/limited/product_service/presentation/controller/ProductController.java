@@ -21,7 +21,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-    // 상품 생성
     @PostMapping
     public ResponseEntity<ProductCreateResponse> createProduct(
         @RequestBody ProductCreateRequest request) {
@@ -29,7 +28,6 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    // 상품 단건 조회
     @GetMapping("{productId}")
     public ResponseEntity<ProductReadResponse> getProduct(@PathVariable UUID productId) {
         ProductReadResponse response = productService.getProduct(productId);

@@ -18,8 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductRepository productRepository;
-
-    // 상품 생성
+    
     @Transactional
     public ProductCreateResponse createProduct(ProductCreateRequest request) {
         Product product = ProductMapper.toCreateEntity(request);
@@ -28,7 +27,6 @@ public class ProductService {
         return ProductMapper.toCreateResponse(product);
     }
 
-    // 상품 단건 조회
     @Transactional(readOnly = true)
     public ProductReadResponse getProduct(UUID productId) {
         Product product = productRepository.findById(productId);
