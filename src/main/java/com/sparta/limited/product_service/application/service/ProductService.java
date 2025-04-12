@@ -32,7 +32,7 @@ public class ProductService {
     // 상품 단건 조회
     @Transactional(readOnly = true)
     public ProductReadResponse getProduct(UUID productId) {
-        Product product = productRepository.findByIdAndDeletedAtIsNull(productId)
+        Product product = productRepository.findById(productId)
             .orElseThrow(ProductNotFoundException::new);
 
         return ProductMapper.toReadResponse(product);

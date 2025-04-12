@@ -8,5 +8,5 @@ public interface ProductRepository {
 
     void save(Product product);
 
-    Optional<Product> findByIdAndDeletedAtIsNull(UUID productId);
+    Optional<Product> findById(UUID productId);
 }
