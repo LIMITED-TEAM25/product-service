@@ -8,4 +8,6 @@ public interface ProductRepository {
     void save(Product product);
 
     Product findById(UUID productId);
+
+    Product findByIdAndDeletedAtIsNull(UUID productId);
 }
