@@ -12,11 +12,16 @@ public class ProductCreateResponse {
     private final String description;
     private final BigDecimal price;
 
-    public ProductCreateResponse(UUID id, String title, String description, BigDecimal price) {
+    private ProductCreateResponse(UUID id, String title, String description, BigDecimal price) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
+    }
+
+    public static ProductCreateResponse of(UUID id, String title, String description,
+        BigDecimal price) {
+        return new ProductCreateResponse(id, title, description, price);
     }
 
 }
