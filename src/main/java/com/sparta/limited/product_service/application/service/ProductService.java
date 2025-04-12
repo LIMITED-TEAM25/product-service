@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    
+
     @Transactional
     public ProductCreateResponse createProduct(ProductCreateRequest request) {
         Product product = ProductMapper.toCreateEntity(request);
@@ -29,6 +29,13 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductReadResponse getProduct(UUID productId) {
+        Product product = productRepository.findByIdAndDeletedAtIsNull(productId);
+
+        return ProductMapper.toReadResponse(product);
+    }
+
+    @Transactional(readOnly = true)
+    public ProductReadResponse getInternalProduct(UUID productId) {
         Product product = productRepository.findById(productId);
 
         return ProductMapper.toReadResponse(product);
