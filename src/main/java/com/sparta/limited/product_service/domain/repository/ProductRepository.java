@@ -9,5 +9,4 @@ public interface ProductRepository {
 
     Product findById(UUID productId);
 
-    Product findByIdAndDeletedAtIsNull(UUID productId);
 }

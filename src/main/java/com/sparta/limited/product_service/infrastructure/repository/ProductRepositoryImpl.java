@@ -25,10 +25,4 @@ public class ProductRepositoryImpl implements ProductRepository {
             .orElseThrow(ProductNotFoundException::new);
     }
 
-    @Override
-    public Product findByIdAndDeletedAtIsNull(UUID productId) {
-        return jpaProductRepository.findByIdAndDeletedAtIsNull(productId)
-            .orElseThrow(ProductNotFoundException::new);
-    }
-
 }

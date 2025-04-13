@@ -29,13 +29,6 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductReadResponse getProduct(UUID productId) {
-        Product product = productRepository.findByIdAndDeletedAtIsNull(productId);
-
-        return ProductMapper.toReadResponse(product);
-    }
-
-    @Transactional(readOnly = true)
-    public ProductReadResponse getInternalProduct(UUID productId) {
         Product product = productRepository.findById(productId);
 
         return ProductMapper.toReadResponse(product);

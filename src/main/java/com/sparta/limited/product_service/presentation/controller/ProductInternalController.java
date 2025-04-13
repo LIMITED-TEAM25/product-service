@@ -19,7 +19,7 @@ public class ProductInternalController {
 
     @GetMapping("/{productId}")
     public ResponseEntity<ProductReadResponse> getProduct(@PathVariable UUID productId) {
-        ProductReadResponse response = productService.getInternalProduct(productId);
+        ProductReadResponse response = productService.getProduct(productId);
         return ResponseEntity.ok(response);
     }
 
