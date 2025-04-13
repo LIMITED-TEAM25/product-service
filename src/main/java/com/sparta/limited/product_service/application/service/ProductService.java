@@ -4,7 +4,6 @@ import com.sparta.limited.product_service.application.dto.request.ProductCreateR
 import com.sparta.limited.product_service.application.dto.response.ProductCreateResponse;
 import com.sparta.limited.product_service.application.dto.response.ProductReadResponse;
 import com.sparta.limited.product_service.application.mapper.ProductMapper;
-import com.sparta.limited.product_service.domain.exception.ProductNotFoundException;
 import com.sparta.limited.product_service.domain.model.Product;
 import com.sparta.limited.product_service.domain.repository.ProductRepository;
 import java.util.UUID;
@@ -20,7 +19,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    // 상품 생성
     @Transactional
     public ProductCreateResponse createProduct(ProductCreateRequest request) {
         Product product = ProductMapper.toCreateEntity(request);
@@ -29,11 +27,9 @@ public class ProductService {
         return ProductMapper.toCreateResponse(product);
     }
 
-    // 상품 단건 조회
     @Transactional(readOnly = true)
     public ProductReadResponse getProduct(UUID productId) {
-        Product product = productRepository.findById(productId)
-            .orElseThrow(ProductNotFoundException::new);
+        Product product = productRepository.findById(productId);
 
         return ProductMapper.toReadResponse(product);
     }
