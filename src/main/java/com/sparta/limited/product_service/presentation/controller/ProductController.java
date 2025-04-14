@@ -6,6 +6,7 @@ import com.sparta.limited.product_service.application.dto.response.ProductReadRe
 import com.sparta.limited.product_service.application.service.ProductService;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class ProductController {
     public ResponseEntity<ProductCreateResponse> createProduct(
         @RequestBody ProductCreateRequest request) {
         ProductCreateResponse response = productService.createProduct(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("{productId}")

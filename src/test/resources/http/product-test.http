@@ -4,7 +4,7 @@ Content-Type: application/json
 X-User-Id: 123
 
 {
-  "title": "상품7",
+  "title": "상품88",
   "description": "상품설명",
   "price": 10000.00
 }
@@ -14,6 +14,6 @@ GET http://localhost:8080/api/v1/products/b373def5-9b53-42cd-ab09-b07caf26189c
 Content-Type: application/json
 
 ### Internal api - 상품 단건 조회!!
-GET http://localhost:8080/api/v1/internal/products/e72a45c5-c1d9-428a-9d19-813797415fb7
+GET http://localhost:19093/api/v1/internal/products/b373def5-9b53-42cd-ab09-b07caf26189c
 Content-Type: application/json
 
