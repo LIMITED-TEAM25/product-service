@@ -24,7 +24,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @RoleCheck("ADMIN")
+    @RoleCheck("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<ProductCreateResponse> createProduct(
         @RequestBody ProductCreateRequest request,
