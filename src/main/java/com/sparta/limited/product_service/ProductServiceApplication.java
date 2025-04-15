@@ -1,9 +1,11 @@
 package com.sparta.limited.product_service;
 
+import com.sparta.limited.common_module.common.EnableCommonModule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableCommonModule
 public class ProductServiceApplication {
 
     public static void main(String[] args) {
