@@ -1,6 +1,7 @@
 package com.sparta.limited.product_service.domain.model;
 
 import com.sparta.limited.common_module.common.BaseEntity;
+import com.sparta.limited.product_service.domain.model.validator.ProductPriceValidator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class Product extends BaseEntity {
     private BigDecimal price;
 
     private Product(String title, String description, BigDecimal price) {
+        ProductPriceValidator.validatePrice(price);
         this.title = title;
         this.description = description;
         this.price = price;
@@ -47,6 +49,7 @@ public class Product extends BaseEntity {
     }
 
     public void update(String description, BigDecimal price) {
+        ProductPriceValidator.validatePrice(price);
         this.description = description;
         this.price = price;
     }
