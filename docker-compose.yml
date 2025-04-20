@@ -1,0 +1,5 @@
+services:
+  product-service:
+    build:
+      dockerfile: Dockerfile
+    image: sohyun119/product-server:latest
