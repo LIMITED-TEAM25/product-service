@@ -1,5 +1,6 @@
 services:
   product-service:
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
     image: sohyun119/product-server:latest
