@@ -4,6 +4,7 @@ spring:
 
   config:
     import:
+      - optional:file:.env[.properties]
       - classpath:properties/datasource.yml
       - classpath:properties/jpa.yml
       - classpath:properties/eureka.yml
