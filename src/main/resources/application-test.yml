@@ -9,8 +9,6 @@ spring:
       - classpath:properties/jpa.yml
       - classpath:properties/eureka.yml
       - classpath:properties/prometheus.yml
-  profiles:
-    active: local
 
 server:
   port: 19093
